@@ -1,17 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useState, FormEvent } from "react";
 import { CONTACT_INFO, VIDEO_CATEGORIES } from "@/data/portfolioData";
 import { Mail, Phone, MapPin, Copy, Check, ArrowUpRight } from "lucide-react";
 
 export default function ContactSection() {
   const [copiedField, setCopiedField] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [gmailUrl, setGmailUrl] = useState("");
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [category, setCategory] = useState(
+    VIDEO_CATEGORIES[0]?.title || "Brands"
+  );
+  const [details, setDetails] = useState("");
 
   const copyText = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
     setCopiedField(label);
     setTimeout(() => setCopiedField(null), 2000);
+  };
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const subject = `Project Brief: ${category} — ${name}`;
+    const body = `Name: ${name}\nEmail: ${email}\nCategory: ${category}\n\nProject Details:\n${details}`;
+
+    const composeLink = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+      CONTACT_INFO.email
+    )}&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+    setGmailUrl(composeLink);
+    setSubmitted(true);
+
+    window.open(composeLink, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -112,10 +136,7 @@ export default function ContactSection() {
           {/* Right Column: Project Inquiry Form */}
           <div className="lg:col-span-7">
             <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                setSubmitted(true);
-              }}
+              onSubmit={handleSubmit}
               className="rounded-2xl border border-graphite bg-slateCard p-7 md:p-10"
             >
               <h3 className="font-serif text-2xl font-semibold text-alabaster">
@@ -133,6 +154,8 @@ export default function ContactSection() {
                   <input
                     type="text"
                     required
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     placeholder="Alex Morgan"
                     className="w-full rounded-xl border border-graphite bg-obsidian px-4 py-3 text-sm text-alabaster placeholder:text-stoneMuted/50 focus:border-champagne focus:outline-none"
                   />
@@ -145,6 +168,8 @@ export default function ContactSection() {
                   <input
                     type="email"
                     required
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="alex@brand.com"
                     className="w-full rounded-xl border border-graphite bg-obsidian px-4 py-3 text-sm text-alabaster placeholder:text-stoneMuted/50 focus:border-champagne focus:outline-none"
                   />
@@ -155,15 +180,16 @@ export default function ContactSection() {
                 <label className="mb-2 block font-mono text-[11px] uppercase tracking-wider text-stoneMuted">
                   Video / Campaign Category
                 </label>
-                <select className="w-full rounded-xl border border-graphite bg-obsidian px-4 py-3 text-sm text-alabaster focus:border-champagne focus:outline-none">
+                <select
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                  className="w-full rounded-xl border border-graphite bg-obsidian px-4 py-3 text-sm text-alabaster focus:border-champagne focus:outline-none"
+                >
                   {VIDEO_CATEGORIES.map((cat) => (
-                    <option key={cat.id} value={cat.id}>
+                    <option key={cat.id} value={cat.title}>
                       {cat.title}
                     </option>
                   ))}
-                  <option value="full-brand-management">
-                    Full Social Media & Brand Management
-                  </option>
                 </select>
               </div>
 
@@ -174,12 +200,14 @@ export default function ContactSection() {
                 <textarea
                   rows={4}
                   required
+                  value={details}
+                  onChange={(e) => setDetails(e.target.value)}
                   placeholder="Tell me about your brand, deliverables, and timeline..."
                   className="w-full rounded-xl border border-graphite bg-obsidian px-4 py-3 text-sm text-alabaster placeholder:text-stoneMuted/50 focus:border-champagne focus:outline-none"
                 />
               </div>
 
-              <div className="mt-6 flex items-center justify-between gap-4">
+              <div className="mt-6 flex flex-wrap items-center justify-between gap-4">
                 <button
                   type="submit"
                   className="rounded-full bg-champagne px-7 py-3 text-xs font-semibold uppercase tracking-widest text-obsidian transition hover:bg-champagne/90"
@@ -187,10 +215,15 @@ export default function ContactSection() {
                   Send Inquiry
                 </button>
 
-                {submitted && (
-                  <span className="text-xs text-champagne">
-                    Inquiry captured — or email {CONTACT_INFO.email} directly.
-                  </span>
+                {submitted && gmailUrl && (
+                  <a
+                    href={gmailUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs text-champagne underline hover:text-alabaster"
+                  >
+                    Didn&apos;t open? Click here to open Gmail
+                  </a>
                 )}
               </div>
             </form>
@@ -199,10 +232,10 @@ export default function ContactSection() {
 
         {/* Footer */}
         <footer className="mt-20 flex flex-col items-center justify-between gap-4 border-t border-graphite pt-8 text-xs text-stoneMuted sm:flex-row">
-            <span>© 2026 Joel John. All rights reserved.</span>
-            <span className="font-mono text-[11px] uppercase tracking-widest text-champagne/80">
+          <span>© 2026 Joel John. All rights reserved.</span>
+          <span className="font-mono text-[11px] uppercase tracking-widest text-champagne/80">
             Dubai · India
-            </span>
+          </span>
         </footer>
       </div>
     </section>
