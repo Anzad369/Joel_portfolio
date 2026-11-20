@@ -12,7 +12,7 @@ export interface VideoCategorySection {
 }
 
 /**
- * Generates a .jpg thumbnail URL by replacing the trailing .mp4 extension.
+- Generates a .jpg thumbnail URL by replacing the trailing .mp4 extension.
  */
 export function getCloudinaryThumbnail(
   videoUrl: string,
@@ -30,27 +30,47 @@ export function getCloudinaryThumbnail(
 
 export const PROFILE = {
   name: "Joel John",
-  role: "Content Creator & Social Media Brand Manager",
+  role: "Multimedia Content Creator, Graphic Designer & Social Media Brand Manager",
+  tagline: "Content · Video · Graphic Design · Brand Strategy",
   location: "Dubai, UAE",
   yearsExperience: "5+ Years Experience",
   headline:
     "Crafting high-impact visual storytelling, commercial video production, and digital brand growth across Dubai and India.",
-  bio: "Social Media Manager and Multimedia Content Creator with 5 years of agency and corporate experience specialising in building and scaling brands through digital-first strategies. From luxury real estate launches in Dubai to nationwide retail campaigns featured on Ads of the World, every frame is engineered to hold attention and leave a lasting commercial impact.",
+  bio: "Social Media Manager, Multimedia Content Creator, and Graphic Designer with 5 years of agency and corporate experience specialising in building and scaling brands through digital-first strategies. From luxury real estate launches in Dubai to nationwide retail campaigns featured on Ads of the World, every visual and frame is engineered to hold attention and leave a lasting commercial impact.",
   highlights: [
     {
       metric: "4.4M+",
       label: "Organic Views in 15 Days",
       detail: "Forum Kochi Launch — Highlighted on Ads of the World",
+      href: "https://www.adsoftheworld.com/campaigns/it-s-happening-b59ef921-d840-4324-b56a-b1df9dbc88fa",
     },
     {
       metric: "AED 25M+",
       label: "Campaign-Driven Sales",
       detail: "Own Now, Pay Later — Marrfa Discovery Real Estate",
+      href: "",
     },
     {
       metric: "0 → 40K",
       label: "Instagram Growth in 12 Months",
       detail: "Full-funnel monthly campaigns & 100+ creator collabs",
+      href: "",
+    },
+  ],
+  personalProjects: [
+    {
+      id: "personal-project-1",
+      title: "The last boat - Malayalam Documentary",
+      platform: "YouTube",
+      detail: "Concept, pacing, color, and sound design",
+      url: "https://youtu.be/R3JsVKRNDts?si=0uvqxP6AX5ioP3Nh",
+    },
+    {
+      id: "personal-project-2",
+      title: "Vanishing worlds of Kuttanadu - Malayalam Documentary",
+      platform: "YouTube",
+      detail: "Cinematography, cut, and finishing",
+      url: "https://youtu.be/kNE_z1lnsUo?si=qxI1ZnvS5am-wbPs",
     },
   ],
   softwareSkills: [
@@ -127,6 +147,25 @@ export const PROFILE = {
 };
 
 export const VIDEO_CATEGORIES: VideoCategorySection[] = [
+   {
+    id: "real-estate",
+    title: "Real Estate",
+    subtitle: "Dubai luxury property walkthroughs, architectural cinema, and investor reels",
+    videos: [
+      { id: "real-estate-1", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795180274/Vinoth_Alef_Sharjah_ipxotj.mp4" },
+      { id: "real-estate-2", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795180273/Zubair_Video_3_Final_dubvby.mp4" },
+      { id: "real-estate-3", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795180271/Sarah_Eagle_Hills_Abudhabi_d6zfvz.mp4" },
+      { id: "real-estate-4", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795180108/Monstera_For_Social_Media_Upload_idy1oy.mp4" },
+      { id: "real-estate-5", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795180106/Kunal_Binghatti_Mercedes_Final_xfxb8z.mp4" },
+      { id: "real-estate-6", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179820/Jay_Ohana_Jacob_And_Co_Abudhabi_qci1jh.mp4" },
+      { id: "real-estate-7", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179816/Jigyasa_Alef_Sharjah_psts5p.mp4" },
+      { id: "real-estate-8", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179811/Jay_Eagle_Hills_Abudhabi_dqkymc.mp4" },
+      { id: "real-estate-9", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179810/Gokul_Challenging_Times_Personal_Branding_g8rqrf.mp4" },
+      { id: "real-estate-10", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179809/Gokul_Binghatti_knpyah.mp4" },
+      { id: "real-estate-11", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179806/Country_Directors_Video_qsv5r5.mp4" },
+      { id: "real-estate-12", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179802/Broeck_Samana_kqgw1t.mp4" },
+    ],
+  }, 
   {
     id: "brands",
     title: "Brands",
@@ -162,8 +201,8 @@ export const VIDEO_CATEGORIES: VideoCategorySection[] = [
     ],
   },
   {
-    id: "ceo",
-    title: "CEO",
+    id: "UGC",
+    title: "UGC",
     subtitle: "Founder-led storytelling, executive hooks, and high-converting UGC reels",
     videos: [
       { id: "ceo-1", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795178575/Ever_Thought_A_Cocktail_Could_Inspire_A_Watch_In_This_Episode_Of_Ceotries_We_Re_Diving_Into_The_Seiko_Cocktail_Collection._It_S_Where_Japanese_Craftsmanship_Meets_Cocktail_Cul_wfiqlh.mp4" },
@@ -172,25 +211,7 @@ export const VIDEO_CATEGORIES: VideoCategorySection[] = [
       { id: "ceo-4", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795178569/Ceo_Tries_-_Forum_Malls_r7r0m7.mp4" },
     ],
   },
-  {
-    id: "real-estate",
-    title: "Real Estate",
-    subtitle: "Dubai luxury property walkthroughs, architectural cinema, and investor reels",
-    videos: [
-      { id: "real-estate-1", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795180274/Vinoth_Alef_Sharjah_ipxotj.mp4" },
-      { id: "real-estate-2", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795180273/Zubair_Video_3_Final_dubvby.mp4" },
-      { id: "real-estate-3", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795180271/Sarah_Eagle_Hills_Abudhabi_d6zfvz.mp4" },
-      { id: "real-estate-4", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795180108/Monstera_For_Social_Media_Upload_idy1oy.mp4" },
-      { id: "real-estate-5", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795180106/Kunal_Binghatti_Mercedes_Final_xfxb8z.mp4" },
-      { id: "real-estate-6", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179820/Jay_Ohana_Jacob_And_Co_Abudhabi_qci1jh.mp4" },
-      { id: "real-estate-7", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179816/Jigyasa_Alef_Sharjah_psts5p.mp4" },
-      { id: "real-estate-8", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179811/Jay_Eagle_Hills_Abudhabi_dqkymc.mp4" },
-      { id: "real-estate-9", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179810/Gokul_Challenging_Times_Personal_Branding_g8rqrf.mp4" },
-      { id: "real-estate-10", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179809/Gokul_Binghatti_knpyah.mp4" },
-      { id: "real-estate-11", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179806/Country_Directors_Video_qsv5r5.mp4" },
-      { id: "real-estate-12", videoUrl: "https://res.cloudinary.com/dx2yhouml/video/upload/v1795179802/Broeck_Samana_kqgw1t.mp4" },
-    ],
-  },
+
 ];
 
 export const PDF_DOWNLOADS = [

@@ -39,14 +39,23 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-6">
+    <section id="contact" className="relative overflow-hidden py-20 md:py-28">
+      {/* Subtle Crimson-Amber Glow */}
+      <div
+        aria-hidden="true"
+        className="moody-crimson-sheen pointer-events-none absolute right-0 bottom-10 h-[360px] w-[560px] opacity-65 blur-3xl"
+      />
+
+      <div className="relative mx-auto max-w-7xl px-6">
         <div className="grid gap-14 lg:grid-cols-12">
           {/* Left Column: Direct Details & Socials */}
           <div className="lg:col-span-5">
-            <span className="font-mono text-xs uppercase tracking-[0.22em] text-champagne">
-              Bookings & Collaborations
-            </span>
+            <div className="flex items-center gap-3">
+              <span className="font-mono text-xs uppercase tracking-[0.22em] text-champagne">
+                Bookings & Collaborations
+              </span>
+              <span className="h-0.5 w-7 rounded-full bg-champagne" />
+            </div>
             <h2 className="mt-2 font-serif text-4xl font-semibold text-alabaster sm:text-5xl">
               Let&apos;s Work Together
             </h2>
@@ -57,7 +66,7 @@ export default function ContactSection() {
 
             <div className="mt-8 space-y-4">
               {/* Email */}
-              <div className="flex items-center justify-between rounded-xl border border-graphite bg-slateCard p-4">
+              <div className="moody-card flex items-center justify-between rounded-xl border border-graphite p-4 transition hover:border-champagne/60">
                 <a
                   href={`mailto:${CONTACT_INFO.email}`}
                   className="flex items-center gap-3 text-sm text-alabaster hover:text-champagne"
@@ -80,7 +89,7 @@ export default function ContactSection() {
               </div>
 
               {/* Phone / WhatsApp */}
-              <div className="flex items-center justify-between rounded-xl border border-graphite bg-slateCard p-4">
+              <div className="moody-card flex items-center justify-between rounded-xl border border-graphite p-4 transition hover:border-champagne/60">
                 <a
                   href={`tel:${CONTACT_INFO.phoneRaw}`}
                   className="flex items-center gap-3 text-sm text-alabaster hover:text-champagne"
@@ -103,7 +112,7 @@ export default function ContactSection() {
               </div>
 
               {/* Location */}
-              <div className="flex items-center gap-3 rounded-xl border border-graphite bg-slateCard p-4 text-sm text-stoneMuted">
+              <div className="moody-card flex items-center gap-3 rounded-xl border border-graphite p-4 text-sm text-stoneMuted">
                 <MapPin className="h-4 w-4 text-champagne" />
                 <span>{CONTACT_INFO.location}</span>
               </div>
@@ -117,7 +126,7 @@ export default function ContactSection() {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center justify-between rounded-xl border border-graphite bg-obsidian px-4 py-3 text-xs transition hover:border-champagne/60"
+                  className="moody-card group flex items-center justify-between rounded-xl border border-graphite px-4 py-3 text-xs transition hover:border-champagne/70"
                 >
                   <div>
                     <div className="font-semibold text-alabaster group-hover:text-champagne">
@@ -137,7 +146,7 @@ export default function ContactSection() {
           <div className="lg:col-span-7">
             <form
               onSubmit={handleSubmit}
-              className="rounded-2xl border border-graphite bg-slateCard p-7 md:p-10"
+              className="moody-card rounded-2xl border border-graphite p-7 md:p-10"
             >
               <h3 className="font-serif text-2xl font-semibold text-alabaster">
                 Send a Project Brief
@@ -157,7 +166,7 @@ export default function ContactSection() {
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     placeholder="Alex Morgan"
-                    className="w-full rounded-xl border border-graphite bg-obsidian px-4 py-3 text-sm text-alabaster placeholder:text-stoneMuted/50 focus:border-champagne focus:outline-none"
+                    className="w-full rounded-xl border border-graphite bg-obsidian/90 px-4 py-3 text-sm text-alabaster placeholder:text-stoneMuted/50 focus:border-champagne focus:outline-none"
                   />
                 </div>
 
@@ -171,7 +180,7 @@ export default function ContactSection() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="alex@brand.com"
-                    className="w-full rounded-xl border border-graphite bg-obsidian px-4 py-3 text-sm text-alabaster placeholder:text-stoneMuted/50 focus:border-champagne focus:outline-none"
+                    className="w-full rounded-xl border border-graphite bg-obsidian/90 px-4 py-3 text-sm text-alabaster placeholder:text-stoneMuted/50 focus:border-champagne focus:outline-none"
                   />
                 </div>
               </div>
@@ -183,7 +192,7 @@ export default function ContactSection() {
                 <select
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
-                  className="w-full rounded-xl border border-graphite bg-obsidian px-4 py-3 text-sm text-alabaster focus:border-champagne focus:outline-none"
+                  className="w-full rounded-xl border border-graphite bg-obsidian/90 px-4 py-3 text-sm text-alabaster focus:border-champagne focus:outline-none"
                 >
                   {VIDEO_CATEGORIES.map((cat) => (
                     <option key={cat.id} value={cat.title}>
@@ -203,7 +212,7 @@ export default function ContactSection() {
                   value={details}
                   onChange={(e) => setDetails(e.target.value)}
                   placeholder="Tell me about your brand, deliverables, and timeline..."
-                  className="w-full rounded-xl border border-graphite bg-obsidian px-4 py-3 text-sm text-alabaster placeholder:text-stoneMuted/50 focus:border-champagne focus:outline-none"
+                  className="w-full rounded-xl border border-graphite bg-obsidian/90 px-4 py-3 text-sm text-alabaster placeholder:text-stoneMuted/50 focus:border-champagne focus:outline-none"
                 />
               </div>
 

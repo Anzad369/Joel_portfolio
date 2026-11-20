@@ -36,7 +36,7 @@ export default function RootLayout({
       lang="en"
       className={`${jakarta.variable} ${inter.variable} ${jetbrainsMono.variable}`}
     >
-      <body className="bg-obsidian text-alabaster font-sans antialiased selection:bg-champagne/15">
+      <body className="bg-obsidian text-alabaster font-sans antialiased">
         {children}
       </body>
     </html>
